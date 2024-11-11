@@ -21,7 +21,7 @@ public class Calculator {
             System.out.print("Error please enter a number between 1-9: ");
         }
         if(function == 1){
-            long[][]matrix1 = MatrixSize();
+            long[][]matrix1 = matrixCreator();
         }
     }
 
@@ -45,7 +45,7 @@ public class Calculator {
             return 0;
         }
     }
-    public static long[][] MatrixSize() {
+    public static long[][] matrixCreator() {
         //input no of rows
         System.out.print("Enter Number of Rows: ");
         short noOfRowsMatrixOne;
