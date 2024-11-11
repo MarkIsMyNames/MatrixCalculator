@@ -20,6 +20,9 @@ public class Calculator {
         while ((function = byteSizeInt()) < 1 || function > 9) {
             System.out.print("Error please enter a number between 1-9: ");
         }
+        if(function == 1){
+            long[][]matrix1 = MatrixSize();
+        }
     }
 
     public static short shortSizeInt() {
