@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -21,9 +20,29 @@ public class Calculator {
         while ((function = byteSizeInt()) < 1 || function > 9) {
             System.out.print("Error please enter a number between 1-9: ");
         }
-        System.out.println(function);
     }
-    public static short[][] MatrixSize;{
+
+    public static short shortSizeInt() {
+        Scanner input = new Scanner(System.in);
+        try {
+            return input.nextByte();
+        } catch (InputMismatchException e) {
+            // This block catches InputMismatchException
+            // if patterns don't match
+            return 0;
+        }
+    }
+    public static byte byteSizeInt() {
+        Scanner input = new Scanner(System.in);
+        try {
+            return input.nextByte();
+        } catch (InputMismatchException e) {
+            // This block catches InputMismatchException
+            // if patterns don't match
+            return 0;
+        }
+    }
+    public static long[][] MatrixSize() {
         //input no of rows
         System.out.print("Enter Number of Rows: ");
         short noOfRowsMatrixOne;
@@ -39,35 +58,9 @@ public class Calculator {
         }
 
         //Create a 2D array or Matrix
-        short[][]matrixOneSize = new short[noOfRowsMatrixOne][noOfColomsMatrixOne];
-        matrixOneSize[0][1] = 25;
-
-
-
+        long[][]matrixOneSize = new long[noOfRowsMatrixOne][noOfColomsMatrixOne];
+        matrixOneSize[0][1] = 24;
 
         return matrixOneSize;
-    }
-
-    public static short shortSizeInt() {
-        Scanner input = new Scanner(System.in);
-        try {
-            return input.nextShort();
-        }catch(NumberFormatException e){
-            return 0;
-        } catch (InputMismatchException e) {
-            // This block catches InputMismatchException
-            return 0;
-        }
-    }
-    public static byte byteSizeInt() {
-        Scanner input = new Scanner(System.in);
-        try {
-            return input.nextByte();
-        }catch(NumberFormatException e){
-            return 0;
-        } catch (InputMismatchException e) {
-            // This block catches InputMismatchException
-            return 0;
-        }
     }
 }
