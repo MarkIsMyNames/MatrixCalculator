@@ -62,6 +62,9 @@ public class Calculator {
 
         //Create a 2D array or Matrix
         long[][]matrixOneSize = new long[noOfRowsMatrixOne][noOfColomsMatrixOne];
+        System.out.println("Enter first row: ");
+        Scanner input = new Scanner(System.in);
+        String rowListWithSpace = input.nextLine();
         matrixOneSize[0][1] = 24;
 
         return matrixOneSize;
