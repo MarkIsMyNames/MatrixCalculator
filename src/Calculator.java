@@ -1,8 +1,10 @@
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
+
         // select function
         System.out.println(
                 """
@@ -16,56 +18,81 @@ public class Calculator {
                         Enter (8) for Eigenvalues
                         Enter (9) for Power""");
 
+        // checking is a valid function selected
         byte function = 0;
         while ((function = byteSizeInt()) < 1 || function > 9) {
             System.out.print("Error please enter a number between 1-9: ");
         }
+        // Checks which function is selected
         if(function == 1){
-            long[][]matrix1 = matrixCreator();
+            double[][]matrix1 = matrixCreator();
         }
     }
 
+    // Ensures an int of size short is inputted
     public static short shortSizeInt() {
         Scanner input = new Scanner(System.in);
         try {
             return input.nextByte();
         } catch (InputMismatchException e) {
             // This block catches InputMismatchException
-            // if patterns don't match
+            // if patterns don't match e.g. a letter or a number too big
             return 0;
         }
     }
+
+    // Ensures an int of size byte is inputted
     public static byte byteSizeInt() {
         Scanner input = new Scanner(System.in);
         try {
             return input.nextByte();
         } catch (InputMismatchException e) {
             // This block catches InputMismatchException
-            // if patterns don't match
+            // if patterns don't match e.g. a letter or a number too big
             return 0;
         }
     }
-    public static long[][] matrixCreator() {
+
+    // used to create a matrix
+    public static double[][] matrixCreator() {
         //input no of rows
         System.out.print("Enter Number of Rows: ");
         short noOfRowsMatrixOne;
+        // checks if the number of rows is valid
         while ((noOfRowsMatrixOne = shortSizeInt()) == 0){
             System.out.print("Error please enter a number between 1-32767: ");
         }
 
-        //input no of rows
+        //input no of columns
         System.out.print("Enter Number of Columns: ");
         short noOfColomsMatrixOne;
+        // checks if the number of coloms is valid
         while ((noOfColomsMatrixOne = shortSizeInt()) == 0){
             System.out.print("Error please enter a number between 1-32767: ");
         }
 
         //Create a 2D array or Matrix
-        long[][]matrixOneSize = new long[noOfRowsMatrixOne][noOfColomsMatrixOne];
-        System.out.println("Enter first row: ");
+        double[][]matrixOneSize = new double[noOfRowsMatrixOne][noOfColomsMatrixOne];
+
+        // using scanner to find the numbers
         Scanner input = new Scanner(System.in);
-        String rowListWithSpace = input.nextLine();
-        matrixOneSize[0][1] = 24;
+        System.out.print("Enter first row:\t");
+
+        // itterate through the rows
+        for(int rowCounter = 0; rowCounter<noOfRowsMatrixOne; rowCounter++){
+
+            String rowListWithSpace = input.nextLine();
+            // itterate through the coloums and adding them to the matrix
+            for(int positionCounter = 0; positionCounter<noOfColomsMatrixOne; positionCounter++){
+                matrixOneSize[rowCounter][positionCounter] = 1;
+            }
+            System.out.print("Enter next row:\t\t");
+        }
+
+          // Print the output
+            for (double[] row : matrixOneSize) {
+                    System.out.println(Arrays.toString(row));
+            }
 
         return matrixOneSize;
     }
